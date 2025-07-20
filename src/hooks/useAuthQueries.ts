@@ -23,7 +23,19 @@ export const useLogin = () => {
           navigate("/");
         }
       } catch (error) {
-        setError(error?.response?.data.message);
+        if (
+          typeof error === "object" &&
+          error !== null &&
+          "response" in error &&
+          typeof (error as any).response === "object" &&
+          (error as any).response !== null &&
+          "data" in (error as any).response &&
+          typeof (error as any).response.data === "object" &&
+          (error as any).response.data !== null &&
+          "message" in (error as any).response.data
+        ) {
+          setError((error as any).response.data.message as string);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -49,7 +61,19 @@ export const useSignup = () => {
           navigate("/");
         }
       } catch (error) {
-        setError(error?.response?.data.message);
+        if (
+          typeof error === "object" &&
+          error !== null &&
+          "response" in error &&
+          typeof (error as any).response === "object" &&
+          (error as any).response !== null &&
+          "data" in (error as any).response &&
+          typeof (error as any).response.data === "object" &&
+          (error as any).response.data !== null &&
+          "message" in (error as any).response.data
+        ) {
+          setError((error as any).response.data.message as string);
+        }
       } finally {
         setIsLoading(false);
       }

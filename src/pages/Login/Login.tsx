@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/useAuthQueries";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +21,6 @@ const Login = () => {
 
   //hook
   const { isLoading, error: isError } = useAuthStore((state) => state);
-  const navigate = useNavigate();
 
   const { mutate, error, isPending } = useLogin();
 
